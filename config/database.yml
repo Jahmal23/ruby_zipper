@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: ruby_zipper_production
-  username: ruby_zipper
-  password: <%= ENV['RUBY_ZIPPER_DATABASE_PASSWORD'] %>
+
+
