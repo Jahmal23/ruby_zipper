@@ -1,10 +1,10 @@
 class ZipCodeSearchService
 
   def get_names_for_zip_code(zip_code)
-    fake_results
+    fake_white_page_search_results
   end
 
-  def fake_results
+  def fake_white_page_search_results
 
     '{
         "results": [
