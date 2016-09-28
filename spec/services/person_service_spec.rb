@@ -6,7 +6,7 @@ describe 'Getting a list of persons' do
   it 'Converts json results to a list of persons' do
     white_page_json = ZipCodeSearchService.new.fake_white_page_search_results
 
-    persons = PersonService.new.get_persons(white_page_json)
+    persons = PersonService.new.get_persons_from_json(white_page_json)
 
     expect(persons.count).to eq(2)
 
@@ -24,13 +24,13 @@ describe 'Getting a list of persons' do
   end
 
   it 'Should handle invalid data' do
-    persons = PersonService.new.get_persons("bad_json")
+    persons = PersonService.new.get_persons_from_json("bad_json")
 
     expect(persons.count).to eq(0)
   end
 
   it 'Should handle nil' do
-    persons = PersonService.new.get_persons(nil)
+    persons = PersonService.new.get_persons_from_json(nil)
 
     expect(persons.count).to eq(0)
   end
@@ -38,7 +38,7 @@ describe 'Getting a list of persons' do
   it 'Should handle empty results' do
     empty_results = ZipCodeSearchService.new.empty_white_page_search_results
 
-    persons = PersonService.new.get_persons(empty_results)
+    persons = PersonService.new.get_persons_from_json(empty_results)
 
     expect(persons.count).to eq(0)
   end

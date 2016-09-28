@@ -5,7 +5,7 @@ class PersonService
 
   include JsonHelper
 
-  def get_persons(json_result)
+  def get_persons_from_json(json_result)
     persons = []
 
     open_struct = json_to_openstruct(json_result)
