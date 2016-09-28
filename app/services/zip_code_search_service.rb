@@ -1,14 +1,14 @@
 class ZipCodeSearchService
 
   def get_names_for_zip_code(zip_code)
-    fake_white_page_search_results
+    ZipCodeSearchService.fake_white_page_search_results
   end
 
-  def empty_white_page_search_results
+  def self.empty_white_page_search_results
     '{ "results": [], "messages": [] }'
   end
 
-  def fake_white_page_search_results
+  def self.fake_white_page_search_results
     '{
         "results": [
             {

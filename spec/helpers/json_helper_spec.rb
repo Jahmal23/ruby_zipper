@@ -30,7 +30,7 @@ describe 'Getting an Openstruct' do
   end
 
   it 'should handle actual white page api complex json result' do
-    white_page_json = ZipCodeSearchService.new.fake_white_page_search_results
+    white_page_json = ZipCodeSearchService.fake_white_page_search_results
     struct = helper_wrapper.new.json_to_openstruct(white_page_json)
 
     expect(struct).not_to be_nil

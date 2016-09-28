@@ -4,7 +4,7 @@ require 'spec_helper'
 describe 'Getting a list of persons' do
 
   it 'Converts json results to a list of persons' do
-    white_page_json = ZipCodeSearchService.new.fake_white_page_search_results
+    white_page_json = ZipCodeSearchService.fake_white_page_search_results
 
     persons = PersonService.new.get_persons_from_json(white_page_json)
 
@@ -36,7 +36,7 @@ describe 'Getting a list of persons' do
   end
 
   it 'Should handle empty results' do
-    empty_results = ZipCodeSearchService.new.empty_white_page_search_results
+    empty_results = ZipCodeSearchService.empty_white_page_search_results
 
     persons = PersonService.new.get_persons_from_json(empty_results)
 
