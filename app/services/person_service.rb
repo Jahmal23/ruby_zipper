@@ -6,32 +6,29 @@ class PersonService
   include JsonHelper
 
   def get_persons(json_result)
-
     persons = []
 
     open_struct = json_to_openstruct(json_result)
 
-    open_struct.results.each do |x|
+    unless open_struct.nil?
 
-      if has_valid_data?(x)
-        p = Person.new(get_first_name(x),
-                       get_last_name(x),
-                       get_address(x),
-                       get_city(x),
-                       get_zip(x))
+      open_struct.results.each do |x|
 
-        persons << p
+        if has_valid_data?(x)
+          new_person = Person.new(get_first_name(x),
+                                  get_last_name(x),
+                                  get_address(x),
+                                  get_city(x),
+                                  get_zip(x))
+
+          persons << new_person
+        end
       end
-
     end
 
     persons
 
-    end
-
-
-
-
+  end
 
   private
 
@@ -52,6 +49,9 @@ class PersonService
   def has_a_name?(legal_entity)
     (!legal_entity.names.nil?) && (legal_entity.names.count > 0)
   end
+
+  # We don't care if a person is listed at multiple locations with multiple legal entities and names.
+  # There generally is not any good data beyond the first level, so we just deal with the first element in the list.
 
   def get_first_name(open_struct_result)
     open_struct_result.locations[0].legal_entities_at[0].names[0].first_name

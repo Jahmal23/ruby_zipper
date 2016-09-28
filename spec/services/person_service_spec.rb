@@ -29,5 +29,17 @@ describe 'Getting a list of persons' do
     expect(persons.count).to eq(0)
   end
 
+  it 'Should handle nil' do
+    persons = PersonService.new.get_persons(nil)
 
+    expect(persons.count).to eq(0)
+  end
+
+  it 'Should handle empty results' do
+    empty_results = ZipCodeSearchService.new.empty_white_page_search_results
+
+    persons = PersonService.new.get_persons(empty_results)
+
+    expect(persons.count).to eq(0)
+  end
 end

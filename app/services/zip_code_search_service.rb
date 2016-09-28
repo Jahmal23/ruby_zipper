@@ -4,8 +4,11 @@ class ZipCodeSearchService
     fake_white_page_search_results
   end
 
-  def fake_white_page_search_results
+  def empty_white_page_search_results
+    '{ "results": [], "messages": [] }'
+  end
 
+  def fake_white_page_search_results
     '{
         "results": [
             {
@@ -245,8 +248,5 @@ class ZipCodeSearchService
         ],
         "messages": []
     }'
-
   end
-
-
 end
