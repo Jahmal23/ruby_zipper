@@ -1,15 +1,22 @@
 class ZipCodeSearchService
-  def get_zip_code_last_name_results(zip_code, list_of_persons)
+  def get_zip_code_last_name_results(zip_code, list_of_names)
     results = []
 
-    unless list_of_persons.nil? || list_of_persons.count == 0
-      list_of_persons.each do |x|
+    unless list_of_names.nil? || list_of_names.count == 0
+      list_of_names.each do |n|
+
+        search_url = build_api_url(zip_code, n.last, "6342ad6eeb5a7190c1898100237094c1")
+
         # This is stubbed out using WebMock to return fake_white_page_search_results in tests. see spec_helper.rb
-        results << HTTParty.get('http://api.stackexchange.com/2.2/questions?site=stackoverflow')
+        results << HTTParty.get(search_url)
       end
     end
 
     results
+  end
+
+  def build_api_url(zip_code, name, api_key)
+    "https://proapi.whitepages.com/2.2/person.json?last_name=#{name}&postal_code=#{zip_code}&api_key=#{api_key}"
   end
 
   def self.empty_white_page_search_results

@@ -22,7 +22,7 @@ Name.create!(last: 'Almeida')
 Name.create!(last: 'Costa')
 
 Name.create!(last: 'Gomes')
-Name.create!(last: 'Araújo')
+#Name.create!(last: 'Araújo') -- this name is causing url creation issues..
 
 Name.create!(last: 'Martins')
 Name.create!(last: 'Melo')
@@ -42,7 +42,7 @@ Name.create!(last: 'Fernandes')
 Name.create!(last: 'Montes')
 Name.create!(last: 'Morais')
 
-Name.create!(last: 'Gonçalves')
+#Name.create!(last: 'Gonçalves') -- this name is causing url creation issues..
 
 
 

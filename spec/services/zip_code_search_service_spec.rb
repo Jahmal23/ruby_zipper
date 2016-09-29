@@ -27,4 +27,10 @@ describe 'Basic zip code search' do
 
     expect(result.count).to eq(0)
   end
+
+  it 'build a url' do
+    url = ZipCodeSearchService.new.build_api_url("123","foo","key")
+
+    expect(url).to eq("https://proapi.whitepages.com/2.2/person.json?last_name=foo&postal_code=123&api_key=key")
+  end
 end

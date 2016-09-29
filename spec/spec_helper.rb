@@ -24,7 +24,7 @@ RSpec.configure do |config|
   # assertions if you prefer.
 
   config.before(:each) do
-    stub_request(:get,/api.stackexchange.com/)
+    stub_request(:get,/proapi.whitepages.com/)
         .to_return(:status => 200, :body => ZipCodeSearchService.fake_white_page_search_results, :headers => {})
   end
 
