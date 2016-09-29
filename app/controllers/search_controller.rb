@@ -4,8 +4,10 @@ class SearchController < ApplicationController
   end
 
   def search
-    search_result_json = ZipCodeSearchService.new.get_names_for_zip_code(params[:zip])
-    @persons = PersonService.new.get_persons_from_json(search_result_json)
+    names_to_search = NameService.new.get_searchable_names
+
+    search_result_json = ZipCodeSearchService.new.get_zip_code_last_name_results(params[:zip], names_to_search)
+    @persons = PersonService.new.get_persons_from_json_list(search_result_json)
 
     render json: @persons.to_json
   end

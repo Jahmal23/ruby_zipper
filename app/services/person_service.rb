@@ -27,7 +27,18 @@ class PersonService
     end
 
     persons
+  end
 
+  def get_persons_from_json_list(json_results_list)
+    persons = []
+
+    unless json_results_list.nil? || json_results_list.count == 0
+      json_results_list.each do |x|
+        persons += get_persons_from_json(x)
+      end
+    end
+
+    persons
   end
 
   private

@@ -15,7 +15,7 @@ RSpec.describe SearchController, type: :controller do
 
       it 'should return a person list' do
         persons = assigns(:persons)
-        expect(persons.count).to eq(2)
+        expect(persons.count).to be > 0
       end
 
       it 'responds with JSON' do
