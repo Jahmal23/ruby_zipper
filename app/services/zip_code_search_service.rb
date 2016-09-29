@@ -1,7 +1,18 @@
 class ZipCodeSearchService
 
   def get_names_for_zip_code(zip_code)
-    ZipCodeSearchService.fake_white_page_search_results
+    # This is stubbed out using WebMock to return fake_white_page_search_results in tests. see spec_helper.rb
+    HTTParty.get('http://api.stackexchange.com/2.2/questions?site=stackoverflow')
+  end
+
+  def get_zip_code_last_name_results(zip_code, list_of_persons)
+    results = []
+
+    list_of_persons.each do |x|
+      results << HTTParty.get('http://api.stackexchange.com/2.2/questions?site=stackoverflow')
+    end
+
+    results
   end
 
   def self.empty_white_page_search_results

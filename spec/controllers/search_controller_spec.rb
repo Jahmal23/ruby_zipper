@@ -3,11 +3,6 @@ require 'spec_helper'
 
 RSpec.describe SearchController, type: :controller do
   describe '#search' do
-    before(:each) do
-      WebMock.stub_request(:any, /proapi.whitepages.com/)
-          .to_return(status: 201, body: ZipCodeSearchService.fake_white_page_search_results)
-    end
-
     context 'has valid attributes' do
       before(:each) do
         search_params =  {"zip"=>"70130"}
