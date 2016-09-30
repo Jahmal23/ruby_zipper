@@ -23,6 +23,7 @@ RSpec.configure do |config|
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
 
+  # using webmock to intercept api calls in tests
   config.before(:each) do
     stub_request(:get,/proapi.whitepages.com/)
         .to_return(:status => 200, :body => ZipCodeSearchService.fake_white_page_search_results, :headers => {})
