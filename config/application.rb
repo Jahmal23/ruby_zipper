@@ -22,5 +22,8 @@ module RubyZipper
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Explicitly add the 'node_modules' directory to enable angular 2
+    config.assets.paths << Rails.root.join('node_modules')
   end
 end
