@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f06523c3-fc62-4c31-8844-16e9ad16abc5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-    </list>
+    <list default="true" id="f06523c3-fc62-4c31-8844-16e9ad16abc5" name="Default" comment="" />
     <ignored path="ruby_zipper.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.bundle/" />
@@ -646,12 +643,12 @@
       <workItem from="1475022060491" duration="9808000" />
       <workItem from="1475172045508" duration="10777000" />
       <workItem from="1475274093234" duration="1520000" />
-      <workItem from="1475517249285" duration="1796000" />
+      <workItem from="1475517249285" duration="1983000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52852000" />
+    <option name="totallyTimeSpent" value="53039000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="807" extended-state="6" />
