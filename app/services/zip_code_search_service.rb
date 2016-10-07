@@ -1,8 +1,13 @@
 class ZipCodeSearchService
+  include ZipCodeHelper
+
   def get_zip_code_last_name_results(zip_code, list_of_names)
     results = []
 
-    unless list_of_names.nil? || list_of_names.count == 0
+    unless list_of_names.nil? ||
+           list_of_names.count == 0 ||
+           !valid?(zip_code)
+
       list_of_names.each do |n|
 
         search_url = build_api_url(zip_code, n.last, "6342ad6eeb5a7190c1898100237094c1")

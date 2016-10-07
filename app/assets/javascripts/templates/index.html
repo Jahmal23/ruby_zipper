@@ -3,7 +3,8 @@
         <div class="container-fluid">
             <div class="form-group">
                 <div class="input-group">
-                    <input required ng-model="zip" name="zip" type="text" autofocus class="form-control input-lg" placeholder="Enter a US Postal Code">
+                    <input required ng-model="zip" name="zip" type="text" autofocus class="form-control input-lg"
+                           pattern="[0-9]{5}"  placeholder="5 digit US Postal Code">
                 </div>
             </div>
             <button ng-click="search(zip)" class="btn btn-primary btn-lg">Search!</button>
