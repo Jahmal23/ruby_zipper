@@ -6,8 +6,8 @@ class SearchController < ApplicationController
     names_to_search = NameService.new.get_searchable_names
 
     if Rails.env.development?
-      search_result_json_list = []
-      search_result_json_list << ZipCodeSearchService.fake_white_page_search_results
+      faker = ZipCodeSearchService.fake_white_page_search_results
+      search_result_json_list = [faker, faker, faker, faker, faker]
     else
       search_result_json_list =  ZipCodeSearchService.new.get_zip_code_last_name_results(params[:zip], names_to_search)
     end
