@@ -9,11 +9,11 @@ class ZipCodeSearchService
            !valid?(zip_code)
 
       list_of_names.each do |n|
-
         search_url = build_api_url(zip_code, n.last, "6342ad6eeb5a7190c1898100237094c1")
 
         # This is stubbed out using WebMock to return fake_white_page_search_results in tests. see spec_helper.rb
-        results << HTTParty.get(search_url)
+        response = HTTParty.get(search_url)
+        results << response.body unless response.nil?
       end
     end
 

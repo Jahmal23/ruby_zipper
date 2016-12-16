@@ -37,7 +37,6 @@ class PersonService
         persons += get_persons_from_json(x)
       end
     end
-
     persons
   end
 

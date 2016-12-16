@@ -9,7 +9,7 @@ class SearchController < ApplicationController
       faker = ZipCodeSearchService.fake_white_page_search_results
       search_result_json_list = [faker, faker, faker, faker, faker]
     else
-      search_result_json_list =  ZipCodeSearchService.new.get_zip_code_last_name_results(params[:zip], names_to_search)
+      search_result_json_list = ZipCodeSearchService.new.get_zip_code_last_name_results(params[:zip], names_to_search)
     end
 
     @persons = PersonService.new.get_persons_from_json_list(search_result_json_list)

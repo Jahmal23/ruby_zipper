@@ -42,8 +42,10 @@ gem 'angular-rails-templates'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'rb-readline'
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl_rails'
+
 end
 
 
