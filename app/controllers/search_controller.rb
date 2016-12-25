@@ -12,7 +12,7 @@ class SearchController < ApplicationController
       search_result_json_list = ZipCodeSearchService.new.get_zip_code_last_name_results(params[:zip], names_to_search)
     end
 
-    @persons = PersonService.new.get_persons_from_json_list(search_result_json_list)
+    @persons = PersonService.new.get_persons_from_json_list(search_result_json_list, params[:zip])
 
     render json: @persons.to_json
   end

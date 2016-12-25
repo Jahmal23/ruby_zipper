@@ -2,11 +2,14 @@ require 'rails_helper'
 require 'spec_helper'
 
 describe 'Getting a list of persons' do
+  let(:nola_zip) { "70130" }
+  let(:slidell_zip) { "70461" }
+
   context 'single json result' do
     it 'Converts json results to a list of persons' do
       white_page_json = ZipCodeSearchService.fake_white_page_search_results
 
-      persons = PersonService.new.get_persons_from_json(white_page_json)
+      persons = PersonService.new.get_persons_from_json(white_page_json, nola_zip)
 
       expect(persons.count).to eq(2)
 
@@ -24,13 +27,13 @@ describe 'Getting a list of persons' do
     end
 
     it 'Should handle invalid data' do
-      persons = PersonService.new.get_persons_from_json("bad_json")
+      persons = PersonService.new.get_persons_from_json("bad_json", nola_zip)
 
       expect(persons.count).to eq(0)
     end
 
     it 'Should handle nil' do
-      persons = PersonService.new.get_persons_from_json(nil)
+      persons = PersonService.new.get_persons_from_json(nil, nola_zip)
 
       expect(persons.count).to eq(0)
     end
@@ -38,7 +41,7 @@ describe 'Getting a list of persons' do
     it 'Should handle empty results' do
       empty_results = ZipCodeSearchService.empty_white_page_search_results
 
-      persons = PersonService.new.get_persons_from_json(empty_results)
+      persons = PersonService.new.get_persons_from_json(empty_results, nola_zip)
 
       expect(persons.count).to eq(0)
     end
@@ -50,20 +53,31 @@ describe 'Getting a list of persons' do
 
       json_list = [white_page_json, white_page_json, white_page_json]
 
-      persons = PersonService.new.get_persons_from_json_list(json_list)
+      persons = PersonService.new.get_persons_from_json_list(json_list, nola_zip)
 
       # each fake json result from white pages contains 2 people
       expect(persons.count).to eq(2 * 3)
     end
 
+    it 'Should discard bad persons from the results' do
+      white_page_json = ZipCodeSearchService.fake_white_page_search_results_with_bogus_results
+
+      json_list = [white_page_json, white_page_json, white_page_json]
+
+      persons = PersonService.new.get_persons_from_json_list(json_list, slidell_zip)
+
+      # 21 total results, with 3 bad mixed in
+      expect(persons.count).to eq(21 - 3)
+    end
+
     it 'Should handle an empty results list' do
-      persons = PersonService.new.get_persons_from_json_list([])
+      persons = PersonService.new.get_persons_from_json_list([], nola_zip)
 
       expect(persons.count).to eq(0)
     end
 
     it 'Should handle a nil results list' do
-      persons = PersonService.new.get_persons_from_json_list(nil)
+      persons = PersonService.new.get_persons_from_json_list(nil, nola_zip)
 
       expect(persons.count).to eq(0)
     end

@@ -5,7 +5,7 @@ class PersonService
 
   include JsonHelper
 
-  def get_persons_from_json(json_result)
+  def get_persons_from_json(json_result, zip_code)
     persons = []
 
     open_struct = json_to_openstruct(json_result)
@@ -21,7 +21,9 @@ class PersonService
                                   get_city(x),
                                   get_zip(x))
 
-          persons << new_person
+          if valid_person?(new_person, zip_code)
+            persons << new_person
+          end
         end
       end
     end
@@ -29,18 +31,23 @@ class PersonService
     persons
   end
 
-  def get_persons_from_json_list(json_results_list)
+  def get_persons_from_json_list(json_results_list, zip_code)
     persons = []
 
     unless json_results_list.nil? || json_results_list.count == 0
       json_results_list.each do |x|
-        persons += get_persons_from_json(x)
+        persons += get_persons_from_json(x, zip_code)
       end
     end
     persons
   end
 
   private
+
+  def valid_person?(person, zip_code)
+    # white pages has a tendency to include people from surrounding areas in the search results
+    person.zip == zip_code
+  end
 
   def has_valid_data?(open_struct_result)
     has_location?(open_struct_result) &&
