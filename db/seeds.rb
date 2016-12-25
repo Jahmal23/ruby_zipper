@@ -48,8 +48,39 @@ Name.create!(last: 'Neto')
 Name.create!(last: 'Pinto')
 Name.create!(last: 'Cunha')
 
-Name.create!(last: 'Pinto')
-Name.create!(last: 'Cunha')
+Name.create!(last: 'Nascimento')
+Name.create!(last: 'Silveira')
+
+Name.create!(last: 'Conceicao')
+Name.create!(last: 'Brito')
+
+Name.create!(last: 'Fonseca')
+Name.create!(last: 'Coelho')
+
+Name.create!(last: 'Medeiros')
+Name.create!(last: 'Nogueira')
+
+Name.create!(last: 'Pinheiro')
+Name.create!(last: 'Reis')
+
+Name.create!(last: 'Matos')
+Name.create!(last: 'Macedo')
+
+Name.create!(last: 'Siqueira')
+Name.create!(last: 'Bezerra')
+
+Name.create!(last: 'Figueiredo')
+Name.create!(last: 'Braga')
+
+Name.create!(last: 'Correira')
+Name.create!(last: 'Abreu')
+
+Name.create!(last: 'Mota')
+Name.create!(last: 'Batista')
+
+Name.create!(last: 'Moura')
+
+
 
 #Name.create!(last: 'Gonçalves') -- this name is causing url creation issues..
 
