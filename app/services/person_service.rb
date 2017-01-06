@@ -1,6 +1,4 @@
 
-# todo phone number???
-
 class PersonService
 
   include JsonHelper
@@ -19,7 +17,8 @@ class PersonService
                                   get_last_name(x),
                                   get_address(x),
                                   get_city(x),
-                                  get_zip(x))
+                                  get_zip(x),
+                                  get_phone_number(x))
 
           if valid_person?(new_person, zip_code)
             persons << new_person
@@ -89,6 +88,11 @@ class PersonService
   def get_zip(open_struct_result)
     open_struct_result.locations[0].postal_code
   end
+
+  def get_phone_number(open_struct_result)
+    open_struct_result.phones[0].phone_number unless open_struct_result.phones.count == 0
+  end
+
 end
 
 
